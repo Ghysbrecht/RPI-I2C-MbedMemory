@@ -1,0 +1,23 @@
+# The C++ compiler
+CC=g++
+
+# The compiler flags
+CFLAGS=-Wall -c
+
+#
+EXECUTABLE=hello
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): main.o MisterProper.o
+	$(CC)  main.o MisterProper.o -o $(EXECUTABLE)
+
+main.o: main.cpp
+	$(CC) $(CFLAGS) main.cpp
+
+MisterProper.o: lib/MisterProper.cpp
+	$(CC) $(CFLAGS) lib/MisterProper.cpp
+
+
+clean:
+	rm -f *.o $(EXECUTABLE)
